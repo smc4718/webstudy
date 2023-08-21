@@ -39,8 +39,22 @@
             ㄴ01_HTML : 현재 디렉터리
    -->
   <p>
-    <img alt="여우" src="../../images/animal1.jpg" width="200px">
+    <img alt="여우" src="../../assets/images/animal1.jpg" width="200px">
   </p>
+
+  <p>
+    <audio controls="controls" autoplay="autoplay">  <!--속성과 값이 이름이 동일하면, 속성만 적어줄 수 있다.-->
+      <source src="../../assets/audio/t-rex-roar.mp3" type="audio/mp3">  <!--mime타입이라고 함-->
+      브라우저가 &lt;audio&gt; 태그를 지원하지 않는다면 내가 보일 것이다.
+    </audio>
+  </p>
+
+ <p>
+   <video controls width="300px">
+     <source src="../../assets/video/flower.webm" type="video/webm">
+     브라우저가 &lt;video&gt; 태그를 지원하지 않는다면 내가 보일 것이다.
+   </video>
+ </p>
 
 </body>
 </html>
