@@ -15,9 +15,10 @@
       box-sizing: border-box;
       width: 192px;
       height: 128px;
+
       background-image: url(../../assets/images/animal10.jpg);
       background-size: 192px 128px;
-    
+      background: url(../../assets/images/animal10.jpg) 192px 128px/center; /* 단축속성 : 크기(size)/위치(position) */
     }
 
   </style>
@@ -39,6 +40,7 @@
       /* 정렬은 자동으로 해줌 (센터는 가로로 가운데정렬) */
       /* top/bottom(세로 정렬), left/center/right(가로 정렬) */
       background-size: auto; /* 이미지 크기를 그대로 사용 */
+      background: url(../../assets/images/attach1.png) no-repeat auto/right;
     }
 
   </style>
@@ -49,15 +51,19 @@
   <style>
     /* box보다 큰 이미지 처리 */
     .box3 {
+
       box-sizing: border-box;
       width: 300px;
       height: 300px;
       border: 1px solid gray;
+      
       background-image: url(../../assets/images/light2.png);
       background-repeat: no-repeat;
       background-size: contain; /* contain : 이미지를 늘리거나 자르지 않고 최대한 크게 조정해서 표현 */ 
       /* background-size: cover; - 너비/높이 중 작은 부분을 최대한 여백 없이 표시하고 box 밖으로 나간 부분은 자름 */ 
       background-position: center;
+      background: url(../../assets/images/light2.png) no-repeat cover/center;
+    
     }
   </style>
   <div class="box3"></div>
@@ -69,8 +75,10 @@
       box-sizing: border-box;
       width: 115px;
       height: 115px;
+      
       background-image: url(../../assets/images/weather.png);
-      background-position: -145px 0; /* 가로 세로 순으로 이동, -145px: 배경이 왼쪽으로 145px 이동 */
+      background-position: -145px -145px; /* 가로 세로 순으로 이동, -145px: 배경이 왼쪽으로 145px 이동 */
+      background: url(../../assets/images/weather.png) auto/-145px -145px;
     }
 
   </style>
@@ -83,14 +91,38 @@
       box-sizing: border-box;
       width: 115px;
       height: 115px;
+      
       background-image: url(../../assets/images/logo.png);
       background-position: -1170px -175px; /* 가로 세로 순으로 이동, -145px: 배경이 왼쪽으로 145px 이동 */
+      background: url(../../assets/images/logo.png) auto/-1170px -175px;
     }
 
   </style>
   <div class="box5"></div>
 
+  <hr>
+
+  <style>
+    .box6 {
+      box-sizing: border-box;
+      width: 640px;
+      height: 480px;
+      
+      background-image: url(../../assets/images/architecture2.jpg);
+      background-size: 640px 480px; /* 또는 똑같이 맞추려면 background-size: 100% 해도 됨 */
+      background-color: gray;
+      background-blend-mode: multiply;
+      background: url(../../assets/images/architecture2.jpg) auto/640px 480px gray multiple;
+
+      font-size: 80px;
+      font-weight: 900;
+      color: white;
+      text-align: center; /* 가로 가운데 정렬 */
+      line-height: 480px; /* box의 height와 line-height가 동일하면 세로 가운데 정렬 효과가 나타난다.(1줄만 가능) */
+    }
+  </style>
+  <div class="box6">우와</div>
+
 
 </body>
 </html>
-
