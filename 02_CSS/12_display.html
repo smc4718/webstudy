@@ -93,6 +93,35 @@
     <div class="box3"></div>
   </div>
 
+  <hr>
+
+  <style>
+    /* id선택자는 #으로 부른다. */
+    #agree_all {
+      display: none;  /* 눈에서만 사라지고 체크박스는 됨 */
+    }
+    /* .wrap5번 아래에 label 으로 해석 */
+    .wrap5 > label {
+      padding-left: 20px;
+      /* padding은 label안에 여백을 주는 것 (padding-left: 20px;) */
+      /* margin은 label밖에 여백을 줌->label은 뒤로 밀림 (margin-left: 20px;) */
+      /* 글자나 이미지가 들어와야 하기 때문에 padding으로 준다. */
+      background-image: url(../../assets/images/check1.png);
+      background-repeat: no-repeat; /* 배경이미지 반복 조절 */
+      background-size: 16px 16px;   /* 배경 사이즈 조절 */
+      background-position: 0 3px;   /* 배경위치조절 */
+    }
+    /* CSS에서 checkbox 눌렀을 때 상태는 아래와 같이 작성 */
+    /* checked + laber = 체크박스 다음에 있는 라벨 (체크박스 인접형제 : 인접해 있는 형제) */
+    #agree_all:checked + label {
+      background-image: url(../../assets/images/check2.png);
+    }
+  </style>
+
+  <div class="wrap5">
+    <input type="checkbox" id="agree_all">
+    <label for="agree_all">모두 동의합니다</label>
+  </div>
 
 </body>
 </html>

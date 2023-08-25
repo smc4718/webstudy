@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <style>
+    /* 영역을 벗어난 것들을 정리해 주는 것이 overflow */
+    div {
+      box-sizing: border-box;
+      width: 200px;
+      height: 200px;
+      border: 1px solid gray;
+    }
+
+    .box1 {
+      overflow: scroll; /* 가로세로방향으로 스크롤바가 생긴다. */
+    }
+    .box2 {
+      overflow: hidden; /* 넘치는 글자들을 숨긴다. */
+    }
+
+  </style>
+
+  <div class="box1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at dolor magna. Cras in blandit magna. Phasellus mattis cursus augue eget rhoncus. Quisque bibendum mauris diam, a ultricies ante sodales ut. Vivamus arcu eros, semper a mollis in, interdum ut nisi. Nullam semper felis id cursus dapibus. Ut sit amet felis maximus, pellentesque ligula vitae, mattis ex. Phasellus pulvinar est in risus suscipit aliquam vitae ac arcu.
+  </div>
+
+  <div class="box2">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at dolor magna. Cras in blandit magna. Phasellus mattis cursus augue eget rhoncus. Quisque bibendum mauris diam, a ultricies ante sodales ut. Vivamus arcu eros, semper a mollis in, interdum ut nisi. Nullam semper felis id cursus dapibus. Ut sit amet felis maximus, pellentesque ligula vitae, mattis ex. Phasellus pulvinar est in risus suscipit aliquam vitae ac arcu.
+  </div>
+
+</body>
+</html>
