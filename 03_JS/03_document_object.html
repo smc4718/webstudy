@@ -116,7 +116,7 @@
       4. 객체 속성 사용
         1) 객체.속성
         2) 객체['속성']    
-          
+      5. F12 - [Elements] 탭 - [Properties] 탭에서 property를 확인할 수 있다.
     */
     var male = document.getElementById('male');
     // '.'찍어서 부르는 것은 프로퍼티를 부르는 것 ↓  (프로퍼티 = 객체의 속성)
@@ -134,7 +134,27 @@
     console.log('id', female['id'])
     console.log('class', female['className'])
     console.log('checked', female['checked'])
+
+    male.checked = false;   // male.setAttribute('checked');
+    female.checked = true;  // female.setAttribute('checked', 'checked');
     
+  </script>
+
+  <!-- CSS 처리하기 -->
+  <p id="p5">Hello World</p>
+  <script>
+    /*
+      CSS 처리하기
+      1. 문서 객체의 style 속성을 이용한다.
+      2. style 속성으로 지정한 CSS 속성은 inline 방식으로 적용된다.
+        (JavaScript로 지정한 CSS는 항상 적용된다.)
+      3. style 속성 뒤에 CSS 속성을 작성한다.                              ↓ 둘 중에 하나로 사용하면 된다.
+        1) 하이픈(-)을 제거한 뒤 camel case 방식으로 CSS 속성을 바꾼다. 예시) 객체.style.fontSize = '32px'
+        2) CSS 속성을 문자열(string) 형식으로 그대로 사용한다.          예시) 객체.style['font-size'] = '32px'
+    */
+   var p5= document.getElementById('p5');
+   p5.style.fontSize = '32px';
+   p5.style['text-align'] = 'center';
   </script>
 
   <!-- 연습1. 봄,여름,가을,겨울 목록 만들기-->
@@ -181,7 +201,16 @@
       site.innerHTML += '<li><a href="https://www.daum.net/"><img src="../../assets/images/daum.png" width="192px"></a></li>';
     </script>
     // 구글, 네이버, 다음 로고 클릭하면 해당 페이지로 이동하기
-  </ul>
+    </ul>
+
+  <!-- 연습3. password 입력 상자를 text 입력 상자로 바꾸기 -->
+  <div>
+    <input type="password" id="pw">
+  </div>
+  <script>
+    var pw = document.getElementById('pw');
+    pw.type = 'text'; // pw.setAttribute('type', 'text');
+  </script>
 
 </body>
 </html>
