@@ -112,6 +112,136 @@
 
   </script>
 
+  <script>
+
+    /*
+      인수와 매개변수
+      1. 매개변수를 선언할 때는 선언 키워드(var, let, const)를 사용하지 않는다. (매개변수는 변수명만 작성한다.)
+      2. 디폴트 매개변수 처리가 가능하다.
+        1) 변수를 선언하고 어떤 값도 저장하지 않으면 undefined 값을 가진다.
+        2) 매개변수로 인수를 전달하지 않으면 매개변수는 undefined 값을 가진다.
+        3) 매개변수의 undefined 여부에 따라 매개변수의 초기화 작업을 진행할 수 있다.
+        4) 매개변수에 디폴트 값을 직접 저장할 수 있다.
+      3. 전개 연산자(...)가 존재한다. (자바에서는 int...a 와 같음(배열) )
+        1) 인수의 개수가 정해지지 않은 경우에 사용한다.
+        2) 매개변수를 배열로 처리한다.
+      4. 인수를 저장하는 arguments 객체가 있다.
+        1) 매개변수를 선언하지 않아도 모든 인수는 arguments 객체에 저장된다.
+        2) arguments 객체는 배열과 유사하게 동작한다.
+    */
+
+    // 인수와 매개변수
+    function myFunc3(a){
+      console.log(a);
+    }
+    myFunc3(10);
+    myFunc3('Hello World');
+    var a = true; // 만약 호출 함수가 해당 구문보다 위에 있으면, 호이스팅때문에 var = a; 선언부가 위로 올라가기에 아직 값이 없으니 undefined 뜸.
+    myFunc3(a)
+
+    // 익명 함수 - 인수와 매개변수
+    var myFunc4 = (b)=>{  // 변수에 함수를 저장시키면, 이 변수는 곧 함수다.
+      console.log(b);
+    }
+    myFunc4(100);
+    myFunc4('안녕하세요');
+    var b = false;
+    myFunc4(b);
+
+    ((c)=>{
+      console.log(c);
+    })(1000);   // 1000 이 c로 전달되서 사용된다.
+
+    // 디폴트 매개변수
+    function myFunc5(a){
+      if(a === undefined){  // a로 전달된 인수가 없으면 a = 0 이다.
+        a = 0;
+      }
+      console.log(a);
+    }
+    myFunc5(10);
+    myFunc5();
+
+    // 디폴트 매개변수( ES6 = 애크마스크립트(=자바스크립트 원래 명칭) )
+    function myFunc6(a = 0){
+      console.log(a);
+    }
+    myFunc6(10);
+    myFunc6();
+
+    // 전개 연산자(...)
+    function myFunc7(...a){
+      for(let i = 0; i < a.length; i++){
+        console.log(a[i]);
+      }
+    }
+    myFunc7(1, 2, 3, 4, 5);
+
+    // arguments 객체
+    function myFunc8(){
+      for(let i = 0; i < arguments.length; i++){  // arguments 자체가 원래 존재하는 객체이다.
+        console.log(arguments[i]);
+      }
+    }
+    myFunc8(6, 7, 8, 9, 10);
+  </script>
+
+  <script>
+  /*
+    반환(return)
+    1. 반환 타입을 작성하지 않는다.
+    2. return 반환값; 을 통해서 값을 반환할 수 있다.
+    3. return; 을 통해서 함수를 종료할 수 있다.
+  */
+    
+    function myMax(a, b, c){
+      if(isNaN(a) || isNaN(b) || isNaN(c)){ // a,b,c, 가 숫자가 아니면 비교하지 않겠다.(종료 = undefined)
+        return;
+      }
+      let max = a;
+      if(b > max) max = b;
+      if(c > max) max = c;
+      return max;
+      // 자바에서는 return 과 return max; 같이 쓸 수 없다. (JS만 가능.)
+    }
+    function myMin(a, b, c){
+      if(isNaN(a) || isNaN(b) || isNaN(c)){
+        return;
+      }
+      let min = a;
+      if(b < min) min = b;
+      if(c < min) min = c;
+      return min;
+    }
+    function myMedian(a, b, c){
+      if(isNaN(a) || isNaN(b) || isNaN(c)){
+        return;
+      }
+      /*
+      let median;
+      if(a >= b){
+        if(b >= c) median = b;      // a b c
+        else if(a <= c) median = a; // c a b
+        else median = c;            // a c b
+      } 
+      else if(a > c) median = a;  // b a c
+      else if(b > c) median = c;  // b c a
+      else median = b;            // c b a
+      return median;
+      */
+     let median;
+     if((b >= a && a >= c) || (c >= a && a >= b)){  // b a c, c a b
+      median = a;
+    } else if((a >= b && b >= c) || (c >= b && b >= a) ) { // a b c, c b a
+      median = c;
+    }   
+     return median;
+    }
+    console.log(myMax(1, 2, 3));
+    console.log(myMin(1, 2, 3));
+    console.log(myMedian(1, 2, 3));
+
+  </script>
 
 </body>
 </html>
