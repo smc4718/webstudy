@@ -297,5 +297,81 @@
     console.log(factorial(5));
 
   </script>
+
+  <script>
+
+    /*
+      타이머 함수(내장 함수)
+
+      1. setTimeout
+        1) 특정 시간 후에 한 번만 동작한다.
+        2) 동작
+          var timerId = setTimeout(함수, 시간(밀리초));   <--  함수에 함수를 주고 있다 = 콜백
+        3) 동작 취소
+          clearTimeout(timerId);
+
+      2. setInterval
+        1) 특정 시간 간격으로 반복해서 동작한다.
+        2) 동작
+          var timerId = setInterval(함수, 시간(밀리초));
+        3) 동작 취소
+          clearInterval(timerId);
+    */
+
+    // setTimeout  (3초 뒤에 찍기)
+    var timerId = setTimeout(function(){
+      console.log('3초 지났다.');
+    }, 3000); // 3000밀리초 = 3초
+    clearTimeout(timerId);  // 동작 취소
+
+    // setInterval  (1초에 하나씩 찍기)
+    var n = 1;
+    var timerId = setInterval(function(){
+      if(n > 10){
+        clearInterval(timerId);
+      } else {
+        console.log(n++);
+      }
+    }, 1000); // 1000밀리초 = 1초
+
+    
+    </script>
+
+   <div id="timer1"></div>
+   <script>
+
+    // 문제. 5초 타이머 동작시키기(5  4  3  2  1  발사) : setInterval
+    var timer1 = document.getElementById('timer1');
+    var countDown = 5;
+    var timerId = setInterval(function(){
+      if(countDown === 0){
+        timer1.innerHTML = '<h1>발사</h1>';
+        clearInterval(timerId);
+      } else {
+        timer1.innerHTML = '<h1>' + countDown-- + '</h1>';
+      }
+    }, 1000);
+
+   </script>
+
+   <div id="timer2"></div>
+   <script>
+
+    // 문제. n초 타이머 동작시키기(5 4 3 2 1 발사) : setTimeout + 재귀 호출
+    var timer2 = document.getElementById('timer2');
+    function myTimer(countDown){
+      setTimeout(function(){
+        if(countDown === 0){
+          timer2.innerHTML = '<h1>발사</h1>';
+        } else {
+          timer2.innerHTML = '<h1>' + countDown + '</h1>';
+          myTimer(countDown - 1);
+        }
+      }, 1000);
+    }
+
+    myTimer(5);
+   </script>
+
 </body>
 </html>
