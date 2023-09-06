@@ -48,15 +48,14 @@
   <!-- 태그 추가 (부모-자식 관계) -->
   <div id="box1">
     <ul id="menu">
-
     </ul>
   </div>
   <script>
+    
     /*
-    순서대로 추가할 때 append 를 압도적으로 많이 씀.
-      1. 부모.prepend(자식)   : 첫 번째 자식으로 추가하기
-      2. 부모.append(자식)    : 마지막  자식으로 추가하기
-      3. 자식.prependTo(부모) : 첫 번째 자식으로 추가하기
+      1. 부모.prepend(자식)   : 첫번째 자식으로 추가하기
+      2. 부모.append(자식)    : 마지막 자식으로 추가하기
+      3. 자식.prependTo(부모) : 첫번째 자식으로 추가하기
       4. 자식.appendTo(부모)  : 마지막 자식으로 추가하기
     */
 
@@ -65,16 +64,18 @@
 
     // 부모 요소에 자식 추가하기
     menu.prepend('<li id="kimchi">김치</li>');
-    menu.prepend($('<li>').attr('id', 'pizza').text('피자')); // jQuery 객체를 잡아주고 jQuery 메소드로 하나씩 묶어주는 것이다.
-    menu.append('<li id="donut">도넛</li>');                  // 원하는 자리에 요소를 끼워넣을 수 있다.
+    menu.prepend($('<li>').attr('id', 'pizza').text('피자'));
+    menu.append('<li id="donut">도넛</li>');
     menu.append($('<li>').attr('id', 'pasta').text('파스타'));
-
+    
     // 자식 요소를 부모에 추가하기
     var str = '<li id="coffee">커피</li>';
     $(str).prependTo(menu);
-    var obj = $('<li>').attr('id', 'ramen').text('라면');  // jQuery 객체로 시작했기에 obj도 jQuery 객체가 된다.
+    var obj = $('<li>').attr('id', 'ramen').text('라면');
     obj.appendTo(menu);
+
   </script>
+
 
   <hr>
 
@@ -88,8 +89,8 @@
   <script>
 
     /*
-      1. 형제.before(형제)  : 이전 형제로 추가하기
-      2. 형제.after(형제)   : 다음 형제로 추가하기
+      1. 형제.before(형제) : 이전 형제로 추가하기
+      2. 형제.after(형제)  : 다음 형제로 추가하기
     */
 
     // 형제 요소 jQuery 객체 생성
@@ -100,16 +101,15 @@
     item.before($('<li>').attr('id', 'starwars').text('스타워즈'));
 
     // 다음 형제로 추가하기
-
     var id = 'topgun';
     var title = '탑건';
     item.after('<li id="' + id + '">' + title + '</li>');
-
     var id = 'avatar';
     var title = '아바타';
     item.after($('<li>').attr('id', id).text(title));
 
   </script>
+
 
   <hr>
 
@@ -121,123 +121,14 @@
   </div>
   <script>
 
-    // 특정 요소만 제거하기 (s2의 전체를 지운다.)
+    // 특정 요소만 제거하기
     $('#s2').remove();
 
-    // 하위 요소 제거하기 (box3의 내부 전체를 지운다.)
+    // 하위 요소 제거하기
     $('#box3').empty();
 
   </script>
 
-  <!-- value 속성 -->
-  <p id="p3">
-    <input type="text" placeholder="입력상자">
-    <br>
-    <select>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-    <br>
-    <textarea>안녕하세요</textarea>
-  </p>
-  <script>
-    /*
-
-                      | JavaScript       |   jQuery
-      ----------------|------------------|--------------------
-      value 가져오기  | 요소.value       | 요소.val()
-      value 설정하기  | 요소.value = 값  | 요소.val(값)
-
-    */
-   
-    // value 가져오기
-    console.log($('#p3 > :selected').val());
-
-    // value 설정하기
-    $('#p3 > :text').val('Hello World');
-    $('#p3 > select').val(3);
-    $('#p3 > textarea').text('안녕하세요. 반갑습니다.');
-    
-  </script>
-
-  <!-- data- 속성 -->
-  <p id="p4">
-    <span id="first"></span>부터 <span id="last"></span>까지
-  </p>
-  <script>
-
-    /*
-
-                           | JavaScript               |   jQuery
-      ---------------------|--------------------------|--------------------
-      data-item 가져오기   | 요소.dataset.item        | 요소.data('item')
-      data-item 설정하기   | 요소.dataset.item = 값   | 요소.data('item', 값)
-      data-myName 가져오기 | 요소.dataset.myName      | 요소.data('myName')
-                           |                          | 요소.data('my-name')
-      data-myName 설정하기 | 요소.dataset.myName = 값 | 요소.data('myName', 값)
-                           |                          | 요소.data('myAge')
-      data-my-age 설정하기 | 요소.dataset.my-age      | 요소.data('my-age')
-                           |                          | 요소.data('myAge')
-      data-my-age 설정하기 | 요소.dataset.my-age = 값 | 요소.data('my-age', 값)
-                           |                          | 요소.data('myAge', 값)
-     */
-
-    // data-속성 설정하기
-    $('#p4').data('range', {'first': 1, 'last': 10}); // data-range="{'first': 1, 'last': 10}"
-
-    // data-속성 가져오기
-    var range = $('#p4').data('range');
-
-    // data-속성 설정하기
-    $('#first').data('firstNo', range.first).text(range.first); // data-firstNo="1"
-    $('#last').data('last-no', range.last).text(range.last);    // data-last-no="10"
-
-    // data-속성 가져오기
-    var first = $('#first').data('first-no');
-    var last  = $('#last').data('lastNo');
-    console.log(first, last);
-
-    // 모든 data-속성 가져오기
-    console.log($('#first').data());  // {'firstNo': 1}
-    console.log($('#last').data());   // {'lastNo': 10}
-
-  </script>
-
-  <hr>
-  
-  <!-- attribute로 작성한 data-속성에서는 camel case를 사용하지 말자. -->
-  <p id="p5" data-role="admin" data-member-no="1" data-memberName="홍길동">홍길동</p>
-  <script>
-
-    /*
-
-                           | JavaScript               |   jQuery
-      ---------------------|--------------------------|--------------------
-      data-item 가져오기   | 요소.dataset.item        | 요소.data('item')
-      data-item 설정하기   | 요소.dataset.item = 값   | 요소.data('item', 값)
-      data-myName 가져오기 | 요소.dataset.myname      | 요소.data('myname')
-      data-myName 설정하기 | 요소.dataset.myname = 값 | 요소.data('myname', 값)
-      data-my-age 가져오기 | 요소.dataset.myAge       | 요소.data('my-age')
-                           |                          | 요소.data('myAge')
-      data-my-age 설정하기 | 요소.dataset.my-age = 값 | 요소.data('my-age', 값)
-                           |                          | 요소.data('myAge', 값)
-     */
-
-    // jQuery 객체 생성
-    var p5 = $('#p5');
-
-    // data-속성 가져오기
-    console.log(p5.data('role'));         // admin
-    console.log(p5.data('memberNo'));     // 1,         p5.data('memberNo')도 가능함.
-    console.log(p5.data('member Name'));  // undefined, p5.data('membername')으로 가능함
-
-  </script>
-
-  <hr>
-
-  <p id="p2" data-ho="추사">김정희</p>
-  
 
 </body>
 </html>

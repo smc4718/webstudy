@@ -112,19 +112,19 @@
 
 <hr>
 
-<!-- 강제 이벤트 발생 -->
-<div>
+ <!-- 강제 이벤트 발생 -->
+ <div>
   <button id="btn1">버튼1</button>
   <button id="btn2">버튼2</button>
 </div>
 <script>
 
   // jQuery 객체 생성
-  var btn1 = $('btn1');
-  var btn2 = $('btn2');
+  var btn1 = $('#btn1');
+  var btn2 = $('#btn2');
 
   // btn1의 click 이벤트
-  btn.click(function(){
+  btn1.click(function(){
     alert($(this).text() + ' 클릭했다.');
   })
 
@@ -134,6 +134,10 @@
   })
 
 </script>
+
+
+<hr>
+
 
 <div class="post" data-post="1">
   <h1 class="title">제목1</h1>
@@ -146,10 +150,10 @@
   <input type="button" value="삭제" class="btn_remove1">
 </div>
 <script>
-  var target = $('.btn_remove1').parent();
-  console.log(target);
-  var target = $('.btn_remove1').closest('.post');
-  console.log(target);
+  var btnRemove1 = $('.btn_remove1');
+  btnRemove1.click(function(){
+    alert($(this).closest('.post').data('post'));
+  })
 </script>
 
 <hr>
@@ -165,10 +169,10 @@
   <input type="button" value="삭제" class="btn_remove2">
 </div>
 <script>
-  var target = $('.btn_remove2').prev().prev();
-  console.log(target);
-  var target = $('.btn_remove2').prevAll('.title');
-  console.log(target);
+  var btnRemove2 = $('.btn_remove2');
+  btnRemove2.click(function(){
+    alert($(this).prevAll('.title').data('post'));
+  })
 </script>
 
 <hr>
@@ -184,8 +188,10 @@
   <input type="button" value="삭제" class="btn_remove3">
 </div>
 <script>
-  var target = $('.btn_remove3').prev();
-  console.log(target);
+  var btnRemove3 = $('.btn_remove3');
+  btnRemove3.click(function(){
+    alert($(this).prev().data('post'));
+  })
 </script>
 
 <hr>
@@ -201,8 +207,10 @@
   <input type="button" value="삭제" class="btn_remove4" data-post="2">
 </div>
 <script>
-  var target = $('.btn_remove4');
-  console.log(target);
+  var btnRemove4 = $('.btn_remove4');
+  btnRemove4.click(function(){
+    alert($(this).data('post'));
+  })
 </script>
 
 <hr>
@@ -220,11 +228,12 @@
   <input type="hidden" value="2">
 </div>
 <script>
-  var target = $('.btn_remove5').next();
-  console.log(target);
+  var btnRemove5 = $('.btn_remove5');
+  btnRemove5.click(function(){
+    alert($(this).next().val());
+  })
 </script>
 
-<hr>
 
 </body>
 </html>
