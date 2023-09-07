@@ -130,6 +130,8 @@
     }
 
     checkEmail().then(function(email){
+  // 사용자가 입력한 인증코드
+  var authcode = '123456';
   // 2. ajax2 : 사용 가능한 이메일이라면 인증 메일을 보낸다.
     $.ajax({
       type: 'get',
@@ -137,7 +139,11 @@
       async: true,
       data: 'email=' + email,
       success: function(resData){
-
+        if(authcode === resData.authcode){
+          alert('인증되었습니다.');
+        } else {
+          alert('인증실패했습니다.');
+        }
       }
     })
 
@@ -147,9 +153,6 @@
 
 
   </script>
-
-
-
 
 
   <hr>
