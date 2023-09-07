@@ -170,7 +170,7 @@
 <hr>
 
 <div id="box4">
-  <button id="box4">JSON요청2</button>
+  <button id="btn4">JSON요청2</button>
 </div>
 <script>
   $('#btn4').click(function(){
@@ -182,7 +182,6 @@
       /* 응답 */
       dataType: 'json',
       success: function(resData){           // resData = JSON.parse(xhr.responseText)
-        
         $('#box4').find('table').remove();  // 기존 테이블 제거하기
         myFunc2(resData);                   // myFunc2 함수 호출
       },
@@ -191,19 +190,19 @@
       }
     })
   })
-        // myFunc2 함수 정의
-        function myFunc2(resData){
-          var table = $('<table border="1"><thead><tr><td>제조사</td><td>상품</td><td>가격</td></tr></thead></table>');
-            $.each(resData.products, function(i, elem){
-              var tr = $('<tr>');
-              tr.append($('<td>').text(i + 1));
-              tr.append($('<td>').text(elem.maker));
-              tr.append($('<td>').text(elem.model));
-              tr.append($('<td>').text(elem.price));
-              table.append(tr);
-            })
-            $('#box4').append(table);
-        }
+  // myFunc2 함수 정의
+  function myFunc2(resData){
+    var table = $('<table border="1"><thead><tr><td>순번</td><td>제조사</td><td>상품</td><td>가격</td></tr></thead><tbody>');
+    $.each(resData.products, function(i, elem){
+      var tr = $('<tr>');
+      tr.append($('<td>').text(i + 1));
+      tr.append($('<td>').text(elem.maker));
+      tr.append($('<td>').text(elem.model));
+      tr.append($('<td>').text(elem.price));
+      table.append(tr);
+    })
+    $('#box4').append(table);
+  }
 </script>
 
 </body>
